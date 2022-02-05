@@ -1,11 +1,11 @@
 // TODO: Include packages needed for this application
 const inquirer = require(`inquirer`);
-const generateReadme = require(`../utils/generateMarkdown`);
+const generateReadme = require(`./utils/generateMarkdown`);
 // TODO: Create an array of questions for user input
-const questions = () => {
+const questionsUser = () => {
     return inquirer.prompt([
         {
-            type: 'input',
+            type: `input`,
             name: `name`,
             message: `Let's gather information about you! What is your GitHub username?`,
             validate: nameInput => {
@@ -29,11 +29,26 @@ const questions = () => {
                     return false;
                 }
             }
-        },
+        }
+    ]);
+};
+
+const questionsProject = readmeData => {
+    console.log(`
+==============================
+Let's talk about your project!
+==============================    
+    `);
+
+    //build the project data
+    if (!readmeData.projects) {
+        readmeData.projects = [];
+    }
+    return inquirer.prompt([
         {
-            type: 'input',
+            type: `input`,
             name: `title`,
-            message: `Now let's talk about your project!  What is the title of your project?`,
+            message: `What is the title of your project?`,
             validate: titleInput => {
                 if (titleInput) {
                     return true;
@@ -74,7 +89,11 @@ const questions = () => {
             name: `tests`,
             message: `Please share any testing procedures, including libraries needed`,
         },
-    ]);
+    ])
+        .then(projectData => {
+            readmeData.projects.push(projectData);
+            return readmeData;
+        })
 };
 
 // TODO: Create a function to write README file
@@ -84,4 +103,9 @@ function writeToFile(fileName, data) {}
 function init(generateReadme) {}
 
 // Function call to initialize app
-questions();
+questionsUser()
+    .then(questionsProject)
+    .then(readmeData => {
+        return generateReadme(readmeData);
+    });
+
