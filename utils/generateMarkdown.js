@@ -1,4 +1,4 @@
-const fs = require(`fs`);
+const { template } = require("lodash");
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
@@ -13,11 +13,31 @@ function renderLicenseLink(license) {}
 function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
-          ${data.email}
-          ${data,contributing}
-`;
-}
+const generateMarkdown = projectsArr => {
+       return `
+      ${projectsArr.title}
+  placeholder for license
+
+  Basic Description
+  __________________________________________________________________________
+  ${projectsArr.description}
+
+  Table of Contents
+  __________________________________________________________________________
+  ${projectsArr.table}
+
+
+  Installation information: ${projectsArr.install}
+
+  Usage information: ${projectsArr.usage}
+
+  Tests: ${projectsArr.tests}
+  
+  If you have any questions, please reach out!
+        Email me at: ${projectsArr.email}
+        or visit me on GitHub: ${projectsArr.name}
+  `;
+};
+
 
 module.exports = generateMarkdown;

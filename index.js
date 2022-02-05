@@ -1,13 +1,21 @@
 // TODO: Include packages needed for this application
 const inquirer = require(`inquirer`);
+const fs = require(`fs`);
 const generateReadme = require(`./utils/generateMarkdown`);
 // TODO: Create an array of questions for user input
-const questionsUser = () => {
+
+//this is the name and email that will build to the Questions section of the readme
+const questionsUser = readmeData => {
+    console.log(`
+===================================
+Let's gather information about you! 
+===================================    
+    `);
     return inquirer.prompt([
         {
             type: `input`,
             name: `name`,
-            message: `Let's gather information about you! What is your GitHub username?`,
+            message: `What is your GitHub username?`,
             validate: nameInput => {
                 if (nameInput) {
                     return true;
@@ -29,22 +37,7 @@ const questionsUser = () => {
                     return false;
                 }
             }
-        }
-    ]);
-};
-
-const questionsProject = readmeData => {
-    console.log(`
-==============================
-Let's talk about your project!
-==============================    
-    `);
-
-    //build the project data
-    if (!readmeData.projects) {
-        readmeData.projects = [];
-    }
-    return inquirer.prompt([
+        },
         {
             type: `input`,
             name: `title`,
@@ -90,22 +83,46 @@ Let's talk about your project!
             message: `Please share any testing procedures, including libraries needed`,
         },
     ])
-        .then(projectData => {
-            readmeData.projects.push(projectData);
-            return readmeData;
-        })
+        // .then(projectData => {
+        //     readmeData.push(projectData);
+        //     return readmeData;
+        // })
 };
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+const writeFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/README.md', fileContent, err => {
+            //if there's an error, reject the promise and send the error to the promise's catch method
+            if (err) {
+                reject(err);
+                //return out of the function to make sure the promise doesn't execute
+                return;
+            }
+            //if it worked, resolve the promise and let the user know
+            resolve({
+                ok: true,
+                message: 'Check out your spiffy ReadMe in the dist folder!'
+            });
+        });
+    });
+};
 
 // TODO: Create a function to initialize app
-function init(generateReadme) {}
+module.exports = {writeFile: writeFile};
 
 // Function call to initialize app
 questionsUser()
-    .then(questionsProject)
     .then(readmeData => {
         return generateReadme(readmeData);
+    })
+    .then (pageHTML => {
+        return writeFile(pageHTML);
+    })
+    .then (writeFileResponse => {
+        console.log(writeFileResponse);
+    })
+    .catch(err => {
+        console.log(err);
     });
 
