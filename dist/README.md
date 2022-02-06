@@ -1,24 +1,24 @@
-;lakdj
+Sample Readme
   placeholder for license
 
   Basic Description
   __________________________________________________________________________
-  ;lakj
+  This is a sample of what the Professional-Readme will output for you.
 
   Table of Contents
   __________________________________________________________________________
-  ;lkj
+  you can provide Table here
 
 
-  Installation information: 
+  Installation information: You will need Node installed to run this application.
 
-  Usage information: ojw
+  Usage information: Simply answer the questions and BOOM, you have a Readme!
 
-  Tests: adk
+  Tests: inquire is needed
 
-  Contributing: [04
+  Contributing: Be nice.
   
   If you have any questions, please reach out!
-        Email me at: cjsmith@yahoo.com
+        Email me at: carliesmith@test.com
         or visit me on GitHub: "https://github.com/cjsmith011"
   
