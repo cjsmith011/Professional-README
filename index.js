@@ -75,12 +75,17 @@ Let's gather information about you!
             type: `checkbox`,
             name: `license`,
             message: `What license is available for your project?`,
-            choices: ['Apache', 'MIT', 'Boost', 'Creative Commons', 'BSD', 'GNU', 'Mozilla', 'Other']
+            choices: ['Apache', 'MIT', 'NPM', 'REUSE', 'Hex.pm', 'Eclipse', 'Other']
         },
         {
             type: `input`,
             name: `tests`,
             message: `Please share any testing procedures, including libraries needed`,
+        },
+        {
+            type: `input`,
+            name: `contribute`,
+            message: `What are your standards for users who would like to contribute more to your project?`
         },
     ])
         // .then(projectData => {

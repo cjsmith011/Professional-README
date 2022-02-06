@@ -3,8 +3,7 @@ const { template } = require("lodash");
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {}
-
-// TODO: Create a function that returns the license link
+ // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {}
 
@@ -14,8 +13,7 @@ function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
 const generateMarkdown = projectsArr => {
-       return `
-      ${projectsArr.title}
+       return `${projectsArr.title}
   placeholder for license
 
   Basic Description
@@ -32,10 +30,12 @@ const generateMarkdown = projectsArr => {
   Usage information: ${projectsArr.usage}
 
   Tests: ${projectsArr.tests}
+
+  Contributing: ${projectsArr.contribute}
   
   If you have any questions, please reach out!
         Email me at: ${projectsArr.email}
-        or visit me on GitHub: ${projectsArr.name}
+        or visit me on GitHub: "https://github.com/${projectsArr.name}"
   `;
 };
 

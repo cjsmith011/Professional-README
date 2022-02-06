@@ -1,23 +1,24 @@
-
-      SUPER COOL README
+;lakdj
   placeholder for license
 
   Basic Description
   __________________________________________________________________________
-  description
+  ;lakj
 
   Table of Contents
   __________________________________________________________________________
-  not much table
+  ;lkj
 
 
-  Installation information: install away
+  Installation information: 
 
-  Usage information: usages
+  Usage information: ojw
 
-  Tests: test inquire
+  Tests: adk
+
+  Contributing: [04
   
   If you have any questions, please reach out!
-        Email me at: my email 
-        or visit me on GitHub: carlie
+        Email me at: cjsmith@yahoo.com
+        or visit me on GitHub: "https://github.com/cjsmith011"
   
